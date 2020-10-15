@@ -234,6 +234,7 @@
         }
       }
       */
+
       var board = this.rows();
       var start = - board.length;
       for (var i = start; i < board.length; i++) {
@@ -252,7 +253,9 @@
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function (minorDiagonalColumnIndexAtFirstRow) {
       //same but descending in opposite direction
-      // debugger;
+      // Solution: descend diagonally. If our position is out of bounds before reaching the square, increase
+
+      //debugger;
       board = this.rows();
       console.log('board', board);
       // x is the column number
@@ -260,13 +263,15 @@
       // y is the row number
       var y = 0;
       var count = 0;
-      for (var i = x; i > 0; i--) {
+      //sets the starting position for the decent, based on top row coordinates (x, 0)
+      for (var i = x; i >= 0; i--) {
         if (i >= board.length) {
           //descending diagonally down the matrix
           y++;
           //skip rest of loop cycle
           continue;
         }
+        //stops the loop if coordinates leave the board
         if (y >= board.length) {
           return false;
         }
@@ -286,6 +291,7 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function () {
+      // Blake's solution:  extend the board so it is a 2n * n rectangle. Descend diagonally until out of bounds, looking for conflicts. Do this for all starting positions from (0, 2n) to (0, 0). Ignore any out of bounds positions.
       var board = this.rows();
       var start = (board.length - 1) * 2;
       for (var i = start; i > 1; i--) {
