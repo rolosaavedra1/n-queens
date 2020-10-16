@@ -186,7 +186,6 @@
       return false;
       */
       board = this.rows();
-      console.log('board', board);
       // x is the column number
       var x = majorDiagonalColumnIndexAtFirstRow; //-2
       // y is the row number
@@ -203,13 +202,11 @@
         count += board[i][y];
         //if more than one 1 is found, return true
         if (count > 1) {
-          console.log('passed');
           return true;
         }
         //descend diagonally down the matrix
         y++;
       }
-      console.log('failed');
       return false; // fixme
     },
 
@@ -257,7 +254,6 @@
 
       //debugger;
       board = this.rows();
-      console.log('board', board);
       // x is the column number
       var x = minorDiagonalColumnIndexAtFirstRow; // = 6
       // y is the row number
@@ -279,13 +275,11 @@
         count += board[i][y];
         //if more than one 1 is found, return true
         if (count > 1) {
-          console.log('passed');
           return true;
         }
         //descend diagonally down the matrix
         y++;
       }
-      console.log('failed');
       return false;
     },
 
